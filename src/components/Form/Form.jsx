@@ -2,6 +2,10 @@ import React from 'react';
 import './Form.css'
 
 const Form = () => {
+    const [country, setCountry] = React.useState('');
+    const [city, setCity] = React.useState('');
+    const [subject, setSubject] = React.useState('');
+
     return (
         <div className={"form"}>
             <h3>Введите данные</h3>
