@@ -67,7 +67,7 @@ const Form = () => {
                 value={city}
                 onChange={onChangeCity}
             />
-            <select className={'select'} value={subject} onChange={onChangeSubject}>
+            <select className={'select'} value={subject} defaultValue={'physical'} onChange={onChangeSubject}>
                 <option value={'physical'}>Физ. лицо</option>
                 <option value={'legal'}>Юр. лицо</option>
             </select>
