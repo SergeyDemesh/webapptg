@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './Form.css'
 import {useTg} from "../../hooks/useTg";
 
@@ -7,6 +7,21 @@ const Form = () => {
     const [city, setCity] = React.useState('');
     const [subject, setSubject] = React.useState('');
     const {tg} = useTg()
+
+    const onSendData = useCallback(() => {
+        const data = {
+            country: country,
+            city: city,
+        }
+        tg.sendData(JSON.stringify(data))
+    })
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, []);
 
     useEffect(() => {
         tg.MainButton.setParams({
